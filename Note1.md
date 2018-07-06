@@ -45,6 +45,7 @@ K hyperparameters, can't be learnt from data directly
 * Curse of dimensionality
 * Need lots of data so that they can roughly take up the sample space
 
-
+## Linear Classifier:
+$$f(x, W) = Wx + b$$
 
 
