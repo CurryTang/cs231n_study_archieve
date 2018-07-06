@@ -48,4 +48,9 @@ K hyperparameters, can't be learnt from data directly
 ## Linear Classifier:
 f(x, W) = Wx + b
 
+# Lecture 3
 
+## Loss function
+A loss function tells how good our classifier is
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=L&space;=&space;\frac{1}{N}\sum(L_i(f(X_i,&space;W),&space;y_i)))" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L&space;=&space;\frac{1}{N}\sum(L_i(f(X_i,&space;W),&space;y_i)))" title="L = \frac{1}{N}\sum(L_i(f(X_i, W), y_i)))" /></a>
