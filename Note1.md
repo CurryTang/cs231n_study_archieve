@@ -55,4 +55,37 @@ A loss function tells how good our classifier is
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=L&space;=&space;\frac{1}{N}\sum(L_i(f(X_i,&space;W),&space;y_i)))" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L&space;=&space;\frac{1}{N}\sum(L_i(f(X_i,&space;W),&space;y_i)))" title="L = \frac{1}{N}\sum(L_i(f(X_i, W), y_i)))" /></a>
 
+## SVM
+
+### Max/Min possible loss function
+Max: Positive Infinity
+Min: 0
+
+### If we initialize with all zero, what will be the loss at the very beginning?
+Denote the number of classes as C, then the loss should be C - 1(useful when you debug your program).
+
+### Code Example
+<a href="https://www.codecogs.com/eqnedit.php?latex=L_{i}=\sum_{j\neq&space;y_{i}}max(0,&space;s_{j}&space;-&space;s_{y_{i}}&space;&plus;&space;1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L_{i}=\sum_{j\neq&space;y_{i}}max(0,&space;s_{j}&space;-&space;s_{y_{i}}&space;&plus;&space;1)" title="L_{i}=\sum_{j\neq y_{i}}max(0, s_{j} - s_{y_{i}} + 1)" /></a>
+
+``` python 
+def L_i_vectorized(x, y, W):
+  """
+  A faster half-vectorized implementation. half-vectorized
+  refers to the fact that for a single example the implementation contains
+  no for loops, but there is still one loop over the examples (outside this function)
+  """
+  delta = 1.0
+  scores = W.dot(x)
+  # compute the margins for all classes in one vector operation
+  margins = np.maximum(0, scores - scores[y] + delta)
+  # on y-th position scores[y] - scores[y] canceled and gave delta. We want
+  # to ignore the y-th position and only consider margin on max wrong class
+  margins[y] = 0
+  loss_i = np.sum(margins)
+  return loss_i
+  
+
+```
+
+
 
