@@ -67,6 +67,8 @@ Denote the number of classes as C, then the loss should be C - 1(useful when you
 ### Code Example
 <a href="https://www.codecogs.com/eqnedit.php?latex=L_{i}=\sum_{j\neq&space;y_{i}}max(0,&space;s_{j}&space;-&space;s_{y_{i}}&space;&plus;&space;1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L_{i}=\sum_{j\neq&space;y_{i}}max(0,&space;s_{j}&space;-&space;s_{y_{i}}&space;&plus;&space;1)" title="L_{i}=\sum_{j\neq y_{i}}max(0, s_{j} - s_{y_{i}} + 1)" /></a>
 
+Note: As I understand, the following function only calculates loss for one element, which means, only one column.
+
 ``` python 
 def L_i_vectorized(x, y, W):
   """
@@ -86,6 +88,21 @@ def L_i_vectorized(x, y, W):
   
 
 ```
+The optimal W to make loss equals zero is not unique.
 
+
+## Regularization
+Some example: L1, L2, Elastic Net(L1 + L2), Dropout
+
+## Softmax Classifier
+scores = unnormalized log probabilities of the class
+In summary,
+<a href="https://www.codecogs.com/eqnedit.php?latex=L_{i}&space;=&space;-log(\frac{e^{s_{y_i}}}{\sum_{j}(e^{s_{j}})})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L_{i}&space;=&space;-log(\frac{e^{s_{y_i}}}{\sum_{j}(e^{s_{j}})})" title="L_{i} = -log(\frac{e^{s_{y_i}}}{\sum_{j}(e^{s_{j}})})" /></a>
+
+
+## Optimization
+
+### Gradient
+Always use analytic gradient, and you can use numerical gradient when checking(gradient checking).
 
 
