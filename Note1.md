@@ -105,4 +105,45 @@ In summary,
 ### Gradient
 Always use analytic gradient, and you can use numerical gradient when checking(gradient checking).
 
+# Lecture 4
 
+## Back Propogation
+Why back propogation? More efficient than trivial derivative computing and forward-mode pass(Since forward mode computes multiple-to-one while back propogation computes one-to-multiple and that's what we need indeed).
+
+In a very approximate sense, you can understand BP as reverse-mode chain rule. 
+### An intuitive understanding of derivative
+The derivative on each variable tells you the sensitivity of the whole expression on its value.
+
+### Abstraction
+When considering gate, if we know the expression of a derivative, we can compress lots of nodes into another functionalty node. 
+
+### Some gates:
+Add gate: Gradient distributor
+Max gate: Gradient Router
+Mul Gate: Gradient Switcher
+
+# Lecture 5
+
+## CNN History
+Breakthrough: 2012, Alex Net
+
+## Convolutoin and Pooling
+
+### Difference between convolutional layers
+> Preserve Spacial Structure
+What do convolutioin means?
+For example, for a 32 * 3 * 3 photo, we use a 5 * 5 * 3 filter, slide over the whole matrix, and do dot products.
+Notes:
+1. The depths are always the same(the third dimension)
+
+### Stride
+Size of the output layer: (N - F) / stride + 1
+N: size of the image, F: size of the filter
+
+In practice, we often zero pad the border with magnitude (F - 1) / 2.
+
+### Pooling Layer
+* Make the representations smaller and more managable
+* Operates over each activation map independently
+* Have nothing to do with the depth
+In practice, we often use max pooling. 
